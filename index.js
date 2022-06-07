@@ -14,7 +14,7 @@ const app = express();
 
 /*          Usamos el puerto 3000 para el servidor          */
 const port = 3000
-app.listen(port,()=>{
+app.listen(port, () => {
     console.log('listen on http://localhost:3000')
 })
 
@@ -24,8 +24,14 @@ app.use(express.json()) // para leer los datos en formato json
 app.use(cors()) //para conectar clientes al servidor
 
 
+/*          Importamos los metodos de la base de datos          */
+const { getProduct, setProduct, updateProduct, deleteProduct } = required('./db/database.methods')
 
 
 /*          Lectura de los datos de la base de datos          */
-app.get('/todos',(req,res)=>)
+app.get('/todos', (req, res) =>{
+    getProduct((data)=>{
+        res.json(data);
+    })
+})
 
