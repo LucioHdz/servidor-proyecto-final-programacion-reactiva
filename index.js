@@ -35,3 +35,28 @@ app.get('/todos', (req, res) =>{
     })
 })
 
+
+/*          Cargar nuevos datos a la base de datos          */
+app.post('/todos', (req, res) =>{
+    const body = req.body;
+    setProduct(body,(data) => {
+        res.json(data);
+    })
+})
+
+/*          Actualizar un dato datos a la base de datos          */
+app.patch('/todos/:id', (req, res) =>{
+    const {id} = req.params;
+    const body = req.body;
+    updateProduct(id,body,(data) => {
+        res.json(data);
+    })
+})
+
+/*          Eliminar un dato datos a la base de datos          */
+app.delete('/todos/:id', (req, res) =>{
+    const {id} = req.params;
+    deleteProduct(id,(data) => {
+        res.json(data);
+    })
+})
